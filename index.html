@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Portal do funcionário - OS Fiscal Bot Campos e Filhos">
+  <title>Portal do Funcionário | Campos e Filhos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-icon">CF</div>
+    <div class="brand-text">
+      <strong>Campos e Filhos</strong>
+      <span>Portal do Funcionário</span>
+    </div>
+    <button id="logoutBtn" class="btn btn-outline" hidden>Sair</button>
+  </header>
+
+  <main class="container">
+    <section id="loginView" class="login-card">
+      <div class="eyebrow">ACESSO DO COLABORADOR</div>
+      <h1>Minhas ordens de serviço</h1>
+      <p class="muted">Entre para consultar suas ordens e atualizar o andamento dos serviços.</p>
+
+      <form id="loginForm">
+        <label for="email">E-mail de acesso</label>
+        <input id="email" type="email" autocomplete="username"
+          placeholder="funcionario@empresa.com" required>
+
+        <label for="password">Senha</label>
+        <input id="password" type="password" autocomplete="current-password"
+          placeholder="Sua senha" required>
+
+        <button class="btn btn-primary full" type="submit" id="loginBtn">
+          Entrar no portal
+        </button>
+      </form>
+      <p id="loginMessage" class="message" role="status"></p>
+    </section>
+
+    <section id="appView" hidden>
+      <div class="welcome-card">
+        <div>
+          <div class="eyebrow">ÁREA DO FUNCIONÁRIO</div>
+          <h1 id="employeeName">Olá!</h1>
+          <p class="muted">Acompanhe as ordens de serviço atribuídas a você.</p>
+        </div>
+        <button class="btn btn-outline" id="refreshBtn">Atualizar</button>
+      </div>
+
+      <div class="stats">
+        <article class="stat">
+          <span>Recebidas</span>
+          <strong id="statWaiting">0</strong>
+        </article>
+        <article class="stat">
+          <span>Em execução</span>
+          <strong id="statProgress">0</strong>
+        </article>
+        <article class="stat">
+          <span>Concluídas</span>
+          <strong id="statDone">0</strong>
+        </article>
+      </div>
+
+      <div id="connectionMessage" class="notice" role="status"></div>
+
+      <div class="section-title">
+        <div>
+          <h2>Minhas OS</h2>
+          <p class="muted">As ordens são carregadas da base compartilhada.</p>
+        </div>
+      </div>
+
+      <div class="filters">
+        <label for="filterStatus">Filtrar por status</label>
+        <select id="filterStatus">
+          <option value="all">Todas as OS</option>
+          <option value="waiting">Aguardando recebimento</option>
+          <option value="received">Recebidas</option>
+          <option value="progress">Em execução</option>
+          <option value="done">Concluídas</option>
+        </select>
+      </div>
+
+      <div id="ordersList" class="orders-list"></div>
+      <p id="ordersMessage" class="message" role="status"></p>
+
+      <section class="history-panel">
+        <div class="section-title">
+          <div>
+            <h2>Histórico de movimentações</h2>
+            <p class="muted">Registros das atualizações das suas OS.</p>
+          </div>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+
+      <section class="help-card">
+        <h2>Precisa falar com o encarregado?</h2>
+        <p class="muted">Use o WhatsApp para informar dúvidas, impedimentos ou necessidades no serviço.</p>
+        <a id="whatsappBtn" class="btn btn-whatsapp" href="#" target="_blank" rel="noopener">
+          Abrir WhatsApp
+        </a>
+      </section>
+    </section>
+
+    <footer>
+      <p>OS Fiscal Bot · Campos e Filhos</p>
+      <p>Controle digital complementar à ordem de serviço em papel.</p>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
