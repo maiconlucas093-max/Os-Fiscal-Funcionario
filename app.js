@@ -7,8 +7,8 @@
  * NUNCA coloque a service_role ou tokens secretos neste arquivo.
  */
 
-const SUPABASE_URL = "COLE_A_URL_DO_SUPABASE";
-const SUPABASE_ANON_KEY = "COLE_A_CHAVE_PUBLICA_ANON";
+const SUPABASE_URL = "https://jswyxqxtgyjxzkgscioo.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_WjX9LByNvbcucs9hwzySZQ_c0C8-3k";
 
 // Preencha com o WhatsApp do encarregado, incluindo DDI e DDD.
 // Exemplo de formato: 5531999999999
