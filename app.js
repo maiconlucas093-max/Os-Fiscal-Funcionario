@@ -196,7 +196,7 @@ async function loadOrders() {
       "created_at"
     ].join(","))
     .eq("employee_legacy_id", currentProfile.employee_legacy_id)
-    .order("created_at", { ascending: false });
+    .order("updated_at", { ascending: false });
 
   if (error) {
     throw new Error("Erro ao carregar as OS: " + error.message);
