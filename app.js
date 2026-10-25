@@ -192,8 +192,7 @@ async function loadOrders() {
       "location",
       "notes",
       "status",
-      "updated_at",
-      "created_at"
+      "updated_at"
     ].join(","))
     .eq("employee_legacy_id", currentProfile.employee_legacy_id)
     .order("updated_at", { ascending: false });
