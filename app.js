@@ -610,6 +610,10 @@ function init() {
   });
 
   supabaseClient.auth.onAuthStateChange((event, session) => {
+        if (event === "PASSWORD_RECOVERY") {
+      setTimeout(() => showRecoveryView(), 0);
+      return;
+        }
     if (event === "SIGNED_OUT" || !session) {
       setLoggedIn(false);
       return;
