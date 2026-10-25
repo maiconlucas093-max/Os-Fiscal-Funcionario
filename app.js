@@ -489,6 +489,55 @@ async function saveNewPassword(event) {
   }
 }
 
+
+async function requestPasswordReset() {
+  const email = $("email").value.trim();
+
+  if (!email) {
+    setMessage(
+      "loginMessage",
+      "Digite seu e-mail no campo de acesso antes de solicitar a recuperação.",
+      "error"
+    );
+    $("email").focus();
+    return;
+  }
+
+  const button = $("forgotPasswordBtn");
+  button.disabled = true;
+  button.textContent = "Enviando...";
+
+  setMessage("loginMessage", "");
+
+  try {
+    const { error } = await supabaseClient.auth.resetPasswordForEmail(
+      email,
+      {
+        redirectTo: "https://maiconlucas093-max.github.io/Os-Fiscal-Funcionario/"
+      }
+    );
+
+    if (error) throw error;
+
+    setMessage(
+      "loginMessage",
+      "Se esse e-mail estiver cadastrado, você receberá um link de recuperação. Confira também o spam.",
+      "success"
+    );
+  } catch (error) {
+    console.error(error);
+    setMessage(
+      "loginMessage",
+      error.message || "Não foi possível enviar o e-mail de recuperação.",
+      "error"
+    );
+  } finally {
+    button.disabled = false;
+    button.textContent = "Esqueci minha senha";
+  }
+}
+
+
 async function login(event) {
   event.preventDefault();
 
