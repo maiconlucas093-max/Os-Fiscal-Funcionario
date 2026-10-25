@@ -588,6 +588,14 @@ function init() {
       }
     }
   );
+    $("recoveryForm").addEventListener("submit", saveNewPassword);
+
+  $("backToLoginBtn").addEventListener("click", () => {
+    $("recoveryView").hidden = true;
+    $("loginView").hidden = false;
+    $("appView").hidden = true;
+    setMessage("loginMessage", "");
+  });
 
   $("loginForm").addEventListener("submit", login);
   $("logoutBtn").addEventListener("click", logout);
