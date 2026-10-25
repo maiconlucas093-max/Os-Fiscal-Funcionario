@@ -42,6 +42,34 @@
       </form>
       <p id="loginMessage" class="message" role="status"></p>
     </section>
+    
+    <section id="recoveryView" class="login-card" hidden>
+      <div class="eyebrow">RECUPERAÇÃO DE ACESSO</div>
+      <h1>Crie uma nova senha</h1>
+      <p class="muted">Digite sua nova senha e confirme para recuperar o acesso ao portal.</p>
+
+      <form id="recoveryForm">
+        <label for="newPassword">Nova senha</label>
+        <input id="newPassword" type="password"
+          autocomplete="new-password" minlength="8"
+          placeholder="Digite a nova senha" required>
+
+        <label for="confirmPassword">Confirmar nova senha</label>
+        <input id="confirmPassword" type="password"
+          autocomplete="new-password" minlength="8"
+          placeholder="Digite novamente a senha" required>
+
+        <button class="btn btn-primary full" type="submit" id="recoveryBtn">
+          Salvar nova senha
+        </button>
+      </form>
+
+      <p id="recoveryMessage" class="message" role="status"></p>
+      <button id="backToLoginBtn" class="btn btn-outline full" type="button">
+        Voltar ao login
+      </button>
+    </section>
+    
 
     <section id="appView" hidden>
       <div class="welcome-card">
