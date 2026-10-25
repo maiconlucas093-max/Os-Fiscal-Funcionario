@@ -597,6 +597,10 @@ function init() {
     setMessage("loginMessage", "");
   });
 
+  
+  $("forgotPasswordBtn").addEventListener("click", requestPasswordReset);
+
+  
   $("loginForm").addEventListener("submit", login);
   $("logoutBtn").addEventListener("click", logout);
   $("refreshBtn").addEventListener("click", refreshAll);
