@@ -432,6 +432,63 @@ async function refreshAll() {
   }
 }
 
+
+function showRecoveryView() {
+  $("loginView").hidden = true;
+  $("recoveryView").hidden = false;
+  $("appView").hidden = true;
+  $("logoutBtn").hidden = true;
+}
+
+async function saveNewPassword(event) {
+  event.preventDefault();
+
+  const password = $("newPassword").value;
+  const confirmation = $("confirmPassword").value;
+
+  if (password.length < 8) {
+    setMessage("recoveryMessage", "A senha precisa ter pelo menos 8 caracteres.", "error");
+    return;
+  }
+
+  if (password !== confirmation) {
+    setMessage("recoveryMessage", "As senhas não são iguais. Confira os dois campos.", "error");
+    return;
+  }
+
+  const button = $("recoveryBtn");
+  button.disabled = true;
+  button.textContent = "Salvando...";
+  setMessage("recoveryMessage", "");
+
+  try {
+    const { error } = await supabaseClient.auth.updateUser({
+      password: password
+    });
+
+    if (error) throw error;
+
+    $("newPassword").value = "";
+    $("confirmPassword").value = "";
+
+    setMessage(
+      "recoveryMessage",
+      "Senha alterada com sucesso! Você já pode voltar ao login.",
+      "success"
+    );
+  } catch (error) {
+    console.error(error);
+    setMessage(
+      "recoveryMessage",
+      error.message || "Não foi possível alterar a senha.",
+      "error"
+    );
+  } finally {
+    button.disabled = false;
+    button.textContent = "Salvar nova senha";
+  }
+}
+
 async function login(event) {
   event.preventDefault();
 
