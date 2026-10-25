@@ -142,16 +142,26 @@ async function loadProfile() {
     throw new Error("Não foi possível carregar seu perfil: " + error.message);
   }
 
+  
+  if (profile.active !== true) {
+    throw new Error(
+      "Esta conta está inativa. Peça ao gerente para verificar seu acesso."
+    );
+  }
+
+  if (profile.role !== "employee") {
+    throw new Error(
+      "Este portal é exclusivo para funcionários. Use a conta de funcionário autorizada."
+    );
+  }
+
   if (!profile.employee_legacy_id) {
     throw new Error(
       "Sua conta ainda não foi vinculada a um cadastro de funcionário. " +
       "Peça ao encarregado para vincular seu employee_legacy_id."
     );
   }
-
-  if (!["employee", "manager", "admin"].includes(profile.role)) {
-    throw new Error("Seu perfil não possui uma função autorizada.");
-  }
+  
 
   currentProfile = profile;
   $("employeeName").textContent =
