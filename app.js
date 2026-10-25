@@ -131,9 +131,11 @@ async function loadProfile() {
   }
 
   const { data: profile, error } = await supabaseClient
-    .from("osfiscal_profiles")
-    .select("user_id,email,display_name,role,employee_legacy_id")
-    .eq("user_id", authData.user.id)
+    
+.from("osfiscal_profiles")
+.select("id,display_name,role,employee_legacy_id,active")
+.eq("id", authData.user.id)
+    
     .single();
 
   if (error) {
