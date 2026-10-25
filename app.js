@@ -7,8 +7,9 @@
  * NUNCA coloque a service_role ou tokens secretos neste arquivo.
  */
 
-const SUPABASE_URL = "https://jswyxqxtgyjxzkgscioo.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impzd3l4cXh0Z3lqeHprZ3NjaW9vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI4NTMyNjYsImV4cCI6MjEwODQyOTI2Nn0.iYkzPwnEayMCLTKXnccG6OPq-vuKiupXisNzcQc3GDM";
+
+const SUPABASE_URL = "https://udzztinbnvuigyrjltno.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_p_dvAb9ARGw4mw9lPotz8Q_T8Rwuvii";
 
 // Preencha com o WhatsApp do encarregado, incluindo DDI e DDD.
 // Exemplo de formato: 5531999999999
